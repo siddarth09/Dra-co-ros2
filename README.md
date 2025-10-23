@@ -2,6 +2,9 @@
 **Franka Panda Arm Implementation using MuJoCo + Drake + ROS 2 (ROS 2 support coming soon)**
 
 ---
+<img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/281ca3ff-ffbf-4864-bbfb-2464e0a9510d" />
+
+---
 
 ## Overview
 
