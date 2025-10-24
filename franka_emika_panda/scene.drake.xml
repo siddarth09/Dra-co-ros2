@@ -3,38 +3,50 @@
 
   <option integrator="implicitfast"/>
 
-  <default>
-    <default class="panda">
-      <material specular="0.5" shininess="0.25"/>
-      <joint armature="0.1" damping="1" axis="0 0 1" range="-2.8973 2.8973"/>
-      <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" forcerange="-87 87"/>
-      <default class="finger">
-        <joint axis="0 1 0" type="slide" range="0 0.04"/>
+    <default>
+      
+      <default class="panda">
+        <material specular="0.5" shininess="0.25"/>
+        <joint armature="0.1" damping="1" axis="0 0 1" range="-2.8973 2.8973"/>
+        <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" forcerange="-87 87"/>
+        <default class="finger">
+          <joint axis="0 1 0" type="slide" range="0 0.04"/>
+        </default>
+        <default class="visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+        </default>
+        <default class="collision">
+          <geom type="mesh" group="3"/>
+          <default class="fingertip_pad_collision_1">
+            <geom type="box" size="0.0085 0.004 0.0085" pos="0 0.0055 0.0445"/>
+          </default>
+          <default class="fingertip_pad_collision_2">
+            <geom type="box" size="0.003 0.002 0.003" pos="0.0055 0.002 0.05"/>
+          </default>
+          <default class="fingertip_pad_collision_3">
+            <geom type="box" size="0.003 0.002 0.003" pos="-0.0055 0.002 0.05"/>
+          </default>
+          <default class="fingertip_pad_collision_4">
+            <geom type="box" size="0.003 0.002 0.0035" pos="0.0055 0.002 0.0395"/>
+          </default>
+          <default class="fingertip_pad_collision_5">
+            <geom type="box" size="0.003 0.002 0.0035" pos="-0.0055 0.002 0.0395"/>
+          </default>
+        </default>
       </default>
 
-      <default class="visual">
-        <geom type="mesh" contype="0" conaffinity="0" group="2"/>
-      </default>
-      <default class="collision">
-        <geom type="mesh" group="3"/>
-        <default class="fingertip_pad_collision_1">
-          <geom type="box" size="0.0085 0.004 0.0085" pos="0 0.0055 0.0445"/>
+      
+      <default class="d435i">
+        <material specular="0" shininess="0.25"/>
+        <default class="d435i_visual">
+          <geom group="2" type="mesh" contype="0" conaffinity="0" mass="0"/>
         </default>
-        <default class="fingertip_pad_collision_2">
-          <geom type="box" size="0.003 0.002 0.003" pos="0.0055 0.002 0.05"/>
-        </default>
-        <default class="fingertip_pad_collision_3">
-          <geom type="box" size="0.003 0.002 0.003" pos="-0.0055 0.002 0.05"/>
-        </default>
-        <default class="fingertip_pad_collision_4">
-          <geom type="box" size="0.003 0.002 0.0035" pos="0.0055 0.002 0.0395"/>
-        </default>
-        <default class="fingertip_pad_collision_5">
-          <geom type="box" size="0.003 0.002 0.0035" pos="-0.0055 0.002 0.0395"/>
+        <default class="d435i_collision">
+          <geom group="3" type="mesh" mass="0"/>
         </default>
       </default>
-    </default>
   </default>
+
 
   <asset>
     <material class="panda" name="white" rgba="1.0 1.0 1.0 1.0"/>
@@ -113,6 +125,27 @@
     <mesh file="hand_4_from_obj.obj" name="hand_4"/>
     <mesh file="finger_0_from_obj.obj" name="finger_0"/>
     <mesh file="finger_1_from_obj.obj" name="finger_1"/>
+
+     
+    <material class="d435i" name="Black_Acrylic" rgba="0.07036 0.07036 0.07036 1.0"/>
+    <material class="d435i" name="Cameras_Gray" rgba="0.296138 0.296138 0.296138 1.0"/>
+    <material class="d435i" name="IR_Emitter_Lens" rgba="0.28744 0.665387 0.327778 1.0"/>
+    <material class="d435i" name="IR_Lens" rgba="0.035601 0.035601 0.035601 1.0"/>
+    <material class="d435i" name="IR_Rim" rgba="0.799102 0.806952 0.799103 1.0"/>
+    <material class="d435i" name="Metal_Casing" rgba="1.0 1.0 1.0 1.0"/>
+    <material class="d435i" name="RGB_Pupil" rgba="0.08714 0.002866 0.009346 1.0"/>
+
+    
+    <mesh name="d435i_0" file="d435i_0_from_obj.obj"/>
+    <mesh name="d435i_1" file="d435i_1_from_obj.obj"/>
+    <mesh name="d435i_2" file="d435i_2_from_obj.obj"/>
+    <mesh name="d435i_3" file="d435i_3_from_obj.obj"/>
+    <mesh name="d435i_4" file="d435i_4_from_obj.obj"/>
+    <mesh name="d435i_5" file="d435i_5_from_obj.obj"/>
+    <mesh name="d435i_6" file="d435i_6_from_obj.obj"/>
+    <mesh name="d435i_7" file="d435i_7_from_obj.obj"/>
+    <mesh name="d435i_8" file="d435i_8_from_obj.obj"/>
+
   </asset>
 
   <worldbody>
@@ -166,6 +199,8 @@
                 <geom mesh="link5_c0" class="collision"/>
                 <geom mesh="link5_c1" class="collision"/>
                 <geom mesh="link5_c2" class="collision"/>
+
+                
                 <body name="link6" quat="1 1 0 0">
                   <inertial mass="1.666555" pos="6.0149e-2 -1.4117e-2 -1.0517e-2" fullinertia="1.964e-3 4.354e-3 5.433e-3 1.09e-4 -1.158e-3 3.41e-4"/>
                   <joint name="joint6" range="-0.0175 3.7525"/>
@@ -199,6 +234,7 @@
                     <geom mesh="link7_6" material="black" class="visual"/>
                     <geom mesh="link7_7" material="white" class="visual"/>
                     <geom mesh="link7_c" class="collision"/>
+                    
                     <body name="hand" pos="0 0 0.107" quat="0.9238795 0 0 -0.3826834">
                       <inertial mass="0.73" pos="-0.01 0 0.03" diaginertia="0.001 0.0025 0.0017"/>
                       <geom mesh="hand_0" material="off_white" class="visual"/>
@@ -207,7 +243,32 @@
                       <geom mesh="hand_3" material="white" class="visual"/>
                       <geom mesh="hand_4" material="off_white" class="visual"/>
                       <geom mesh="hand_c" class="collision"/>
+                      
                       <site name="panda_ee" pos="0 0 0.107" size="0.005" rgba="1.0 0.0 0.0 1.0" type="sphere"/>
+                      
+                      <body name="realsense_d435i" pos="0.03 0.0 0.055" quat="0.7071 0 0 0.7071" childclass="d435i">
+                        <inertial mass="0.072" pos="0 0 0" diaginertia="1e-5 1e-5 1e-5"/>
+
+                        
+                        <geom mesh="d435i_0" material="IR_Lens" class="d435i_visual"/>
+                        <geom mesh="d435i_1" material="IR_Emitter_Lens" class="d435i_visual"/>
+                        <geom mesh="d435i_2" material="IR_Rim" class="d435i_visual"/>
+                        <geom mesh="d435i_3" material="IR_Lens" class="d435i_visual"/>
+                        <geom mesh="d435i_4" material="Cameras_Gray" class="d435i_visual"/>
+                        <geom mesh="d435i_5" material="Black_Acrylic" class="d435i_visual"/>
+                        <geom mesh="d435i_6" material="Black_Acrylic" class="d435i_visual"/>
+                        <geom mesh="d435i_7" material="RGB_Pupil" class="d435i_visual"/>
+                        <geom mesh="d435i_8" material="Metal_Casing" class="d435i_visual"/>
+
+                        
+                        <geom class="d435i_collision" type="capsule" fromto="-0.03 0 0 0.03 0 0" size="0.015"/>
+
+                        
+                        <camera name="rgb_camera" pos="0 0 0" quat="0 0 0 1" fovy="60"/>
+                        <camera name="depth_camera" pos="0 0 0" quat="0 0 0 1" fovy="60"/>
+                      </body>
+
+
                       <body name="left_finger" pos="0 0 0.0584">
                         <inertial mass="0.015" pos="0 0 0" diaginertia="2.375e-6 2.375e-6 7.5e-7"/>
                         <joint name="finger_joint1" class="finger"/>
@@ -232,6 +293,7 @@
                         <geom class="fingertip_pad_collision_4"/>
                         <geom class="fingertip_pad_collision_5"/>
                       </body>
+                      
                     </body>
                   </body>
                 </body>
@@ -287,8 +349,40 @@
     <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
   </asset>
 
-  <worldbody>
-    <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
-    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
-  </worldbody>
+<worldbody>
+  
+  <light pos="0 0 2" dir="0 0 -1" directional="true"/>
+  <geom name="ground" type="plane" size="0 0 0.05" material="groundplane"/>
+
+  
+  <body name="table" pos="0.6 0 0.38">   
+    <geom name="table_top" type="box" size="0.4 0.4 0.02" rgba="0.85 0.85 0.85 1.0" contype="1" conaffinity="1"/>
+
+    
+    <body name="leg_fl" pos=" 0.35  0.35 -0.25">
+      <geom type="cylinder" size="0.02 0.25" rgba="0.6 0.6 0.6 1.0"/>
+    </body>
+    <body name="leg_fr" pos=" 0.35 -0.35 -0.25">
+      <geom type="cylinder" size="0.02 0.25" rgba="0.6 0.6 0.6 1.0"/>
+    </body>
+    <body name="leg_bl" pos="-0.35  0.35 -0.25">
+      <geom type="cylinder" size="0.02 0.25" rgba="0.6 0.6 0.6 1.0"/>
+    </body>
+    <body name="leg_br" pos="-0.35 -0.35 -0.25">
+      <geom type="cylinder" size="0.02 0.25" rgba="0.6 0.6 0.6 1.0"/>
+    </body>
+
+    
+    <body name="cube_red" pos="0.2  0.25 0.03"><geom type="box" size="0.025 0.025 0.025" rgba="0.9 0.1 0.1 1.0"/></body>
+    <body name="cube_green" pos="0.1  0.25 0.03"><geom type="box" size="0.025 0.025 0.025" rgba="0.1 0.9 0.1 1.0"/></body>
+    <body name="cube_blue" pos="0.0  0.25 0.03"><geom type="box" size="0.025 0.025 0.025" rgba="0.1 0.1 0.9 1.0"/></body>
+    <body name="cube_yellow" pos="-0.1 0.25 0.03"><geom type="box" size="0.025 0.025 0.025" rgba="0.9 0.9 0.1 1.0"/></body>
+    <body name="cube_purple" pos="-0.2 0.25 0.03"><geom type="box" size="0.025 0.025 0.025" rgba="0.6 0.2 0.8 1.0"/></body>
+  </body>
+
+</worldbody>
+
+
+
+
 </mujoco>

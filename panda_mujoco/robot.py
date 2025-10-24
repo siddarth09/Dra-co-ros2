@@ -6,23 +6,20 @@ from panda_move import PandaMove
 # Path to your MuJoCo model
 xml_path = "/home/siddarth/manipulation_ws/src/panda_mujoco/franka_emika_panda/scene.xml"
 
-# Initialize Panda controller with visualization enabled
 panda = PandaMove(xml_path, visualization=True)
 
 # Define multiple target poses
 targets = [
     RigidTransform(
-        RotationMatrix.MakeZRotation(np.pi / 2),
-        [0.5, 0.0, 0.5]
+        RotationMatrix.MakeXRotation(np.pi / 2),
+        [0.5, 0.0, 0.0]
     ),
     RigidTransform(
         RotationMatrix.MakeZRotation(np.pi / 2),
-        [0.3, 0.0, 0.6]
-    ),
-    RigidTransform(
-        RotationMatrix.MakeZRotation(np.pi / 2),
-        [0.4, 0.2, 0.4]
+        [0.5, 0.5, 0.5]
     )
+ 
+ 
 ]
 
 # Solve IK for each target

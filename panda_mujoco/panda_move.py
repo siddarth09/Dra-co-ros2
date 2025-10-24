@@ -95,6 +95,12 @@ class PandaMove:
         
         return X_WE.rotation(), X_WE.translation()
     
+    def change_targets(self, targets):
+        return RigidTransform(
+            RotationMatrix.MakeZRotation(np.pi / 2),
+            targets
+        )
+
     def _interp_positions(self, p0, p1, steps):
         """Linear interpolation between two positions."""
         p0= np.asarray(p0)
