@@ -3,34 +3,32 @@ import numpy as np
 from pydrake.all import RigidTransform, RotationMatrix
 from panda_move import PandaMove
 
-# Path to your MuJoCo model
-xml_path = "/home/siddarth/manipulation_ws/src/panda_mujoco/franka_emika_panda/scene.xml"
+def main():
+    MODEL_PATH = "/home/siddarth/manipulation_ws/src/panda_mujoco/franka_emika_panda/scene.xml"
+    panda = PandaMove(MODEL_PATH, visualization=False)
+    initial_pose= panda.get_ee_pose()
+    print(initial_pose)
+    # Define IK targets
+    targets = [
+            RigidTransform(
+                RotationMatrix.MakeXRotation(np.pi / 2),
+                [0.5, 0.0, 0.0]
+            ),
+            RigidTransform(
+                RotationMatrix.MakeZRotation(np.pi / 2),
+                [0.5, 0.5, 0.5]
+            )
+    ]
 
-panda = PandaMove(xml_path, visualization=True)
+    # Solve IK
+    q_targets = []
+    for pose in targets:
+        q_sol = panda.solve_ik(pose)
+        q_targets.append(q_sol)
 
-# Define multiple target poses
-targets = [
-    RigidTransform(
-        RotationMatrix.MakeXRotation(np.pi / 2),
-        [0.5, 0.0, 0.0]
-    ),
-    RigidTransform(
-        RotationMatrix.MakeZRotation(np.pi / 2),
-        [0.5, 0.5, 0.5]
-    )
- 
- 
-]
+    # Run motion + live RGB|Depth streaming
+    panda.run_sequence(q_targets, duration=2.0)
 
-# Solve IK for each target
-q_targets = []
-for i, pose in enumerate(targets):
-    print(f"\n Solving IK for Target {i+1}: {pose.translation()}")
-    q_sol = panda.solve_ik(pose)
-    print(f" IK Solution {i+1}: {np.round(q_sol, 4)}")
-    q_targets.append(q_sol)
 
-# Run the full motion sequence in one MuJoCo viewer session
-print("\n Executing full motion sequence...")
-panda.run_sequence(q_targets, duration=3.0)
-
+if __name__ == "__main__":
+    main()

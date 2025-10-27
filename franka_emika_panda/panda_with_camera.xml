@@ -269,11 +269,26 @@
                         <geom mesh="d435i_8" material="Metal_Casing" class="d435i_visual"/>
 
                         <!-- Collision -->
-                        <geom class="d435i_collision" type="capsule" fromto="-0.03 0 0 0.03 0 0" size="0.015"/>
+                        <!-- <geom class="d435i_collision" type="capsule" fromto="-0.03 0 0 0.03 0 0" size="0.015"/> -->
 
-                        <!-- Camera sensors -->
-                        <camera name="rgb_camera" pos="0 0 0" quat="0 0 0 1" fovy="60"/>
-                        <camera name="depth_camera" pos="0 0 0" quat="0 0 0 1" fovy="60"/>
+                        <!-- ===================== Camera definitions ===================== -->
+                        <!-- Color (RGB) camera -->
+                        <!-- RGB Camera -->
+                        <camera name="rgb_camera"
+                              pos="0.03 0.0 0.02"
+                              quat="0 0 1 0"   
+                              fovy="65"
+                              resolution="640 480"
+                              mode="fixed"/>
+
+                      <camera name="depth_camera"
+                              pos="0.03 0.0 0.02"
+                              quat="0 0 1 0"
+                              fovy="65"
+                              resolution="640 480"
+                              mode="fixed"/>
+
+
                       </body>
 
 
