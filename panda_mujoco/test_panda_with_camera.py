@@ -29,8 +29,8 @@ def main():
     renderer = mujoco.Renderer(model, height=H, width=W)
     renderer.enable_depth_rendering()
 
-    rgb_cam_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_CAMERA, "rgb_camera")
-    depth_cam_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_CAMERA, "depth_camera")
+    rgb_cam_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_CAMERA, "side_rgb")
+    depth_cam_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_CAMERA, "side_depth")
 
     if rgb_cam_id == -1 or depth_cam_id == -1:
         raise RuntimeError("Both rgb_camera and depth_camera must exist in the XML!")

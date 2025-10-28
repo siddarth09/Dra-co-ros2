@@ -274,19 +274,20 @@
                         <!-- ===================== Camera definitions ===================== -->
                         <!-- Color (RGB) camera -->
                         <!-- RGB Camera -->
-                        <camera name="rgb_camera"
-                              pos="0.03 0.0 0.02"
-                              quat="0 0 1 0"   
-                              fovy="65"
-                              resolution="640 480"
-                              mode="fixed"/>
+                        <camera name="wrist_rgb"
+                                pos="0.03 0.0 0.02"
+                                quat="0 0 1 0"
+                                fovy="65"
+                                resolution="640 480"
+                                mode="fixed"/>
 
-                      <camera name="depth_camera"
-                              pos="0.03 0.0 0.02"
-                              quat="0 0 1 0"
-                              fovy="65"
-                              resolution="640 480"
-                              mode="fixed"/>
+                        <camera name="wrist_depth"
+                                pos="0.03 0.0 0.02"
+                                quat="0 0 1 0"
+                                fovy="65"
+                                resolution="640 480"
+                                mode="fixed"/>
+
 
 
                       </body>

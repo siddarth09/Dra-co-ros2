@@ -30,8 +30,8 @@ class PandaMove:
         self.renderer = mu.Renderer(self.model, height=self.img_h, width=self.img_w)
         self.renderer.enable_depth_rendering()
 
-        self.rgb_cam_id = mu.mj_name2id(self.model, mu.mjtObj.mjOBJ_CAMERA, "rgb_camera")
-        self.depth_cam_id = mu.mj_name2id(self.model, mu.mjtObj.mjOBJ_CAMERA, "depth_camera")
+        self.rgb_cam_id = mu.mj_name2id(self.model, mu.mjtObj.mjOBJ_CAMERA, "wrist_rgb")
+        self.depth_cam_id = mu.mj_name2id(self.model, mu.mjtObj.mjOBJ_CAMERA, "wrist_depth")
         if self.rgb_cam_id == -1 or self.depth_cam_id == -1:
             raise RuntimeError("Both rgb_camera and depth_camera must exist in the MuJoCo XML.")
 
@@ -230,10 +230,10 @@ class PandaMove:
                     mu.mj_forward(self.model, self.data)
 
                     # Optional: live camera display
-                    bgr, depth_color = self.mujoco_cv2()
-                    combined = np.hstack((bgr, depth_color))
-                    cv2.imshow("MuJoCo Camera (RGB | Depth)", combined)
-                    cv2.waitKey(1)
+                    # bgr, depth_color = self.mujoco_cv2()
+                    # combined = np.hstack((bgr, depth_color))
+                    # cv2.imshow("MuJoCo Camera (RGB | Depth)", combined)
+                    # cv2.waitKey(1)
 
                     v.sync()
                     time.sleep(0.01)
