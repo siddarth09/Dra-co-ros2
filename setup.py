@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'joint_state_pub = panda_mujoco.joint_state_pub:main',
+            'camera_publisher = panda_mujoco.camera_publisher:main',
         ],
     },
 )
